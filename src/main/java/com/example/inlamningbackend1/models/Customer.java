@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Customer {
     @Id
     @GeneratedValue
-    protected long id;
+    protected Long id;
     protected String name;
     protected String ssn;
 

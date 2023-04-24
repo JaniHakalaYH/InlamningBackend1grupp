@@ -27,12 +27,20 @@ public class CustomerController {
         return customerRepository.findAll();
     }
     @RequestMapping("/customer/{id}")
-    public Customer getCustomer(@PathVariable long id){
+    public Customer getCustomer(@PathVariable ("id") Long id){
         return customerRepository.findById(id).get();
     }
+
+    /*@PostMapping("/customers")
+    public String addCostumer(@RequestParam String name, String ssn){
+        Customer c = new Customer(name, ssn);
+        customerRepository.save(c);
+        return "Customer "+name+ " saved";
+    }
+
     @PostMapping("/customers")
     public String addCostumer(@RequestBody Customer c){
         customerRepository.save(c);
-        return "Customer saved";
-    }
+        return "Customer "+c.getName()+" saved";
+    }*/
 }
