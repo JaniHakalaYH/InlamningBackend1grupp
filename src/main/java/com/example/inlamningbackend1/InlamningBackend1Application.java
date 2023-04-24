@@ -53,10 +53,14 @@ public class InlamningBackend1Application {
             itemRepo.save(item3);
 
             Buy buy1 = new Buy(date, c1, itemList1);
+            Buy buy4 = new Buy(date, c1, itemList2);
+            Buy buy5 = new Buy(date, c1, itemList3);
             Buy buy2 = new Buy(date, c2, itemList2);
             Buy buy3 = new Buy(date, c3, itemList3);
 
             buyRepo.save(buy1);
+            buyRepo.save(buy4);
+            buyRepo.save(buy5);
             buyRepo.save(buy2);
             buyRepo.save(buy3);
 
