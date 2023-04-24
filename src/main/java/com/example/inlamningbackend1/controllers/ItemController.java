@@ -2,9 +2,7 @@ package com.example.inlamningbackend1.controllers;
 
 import com.example.inlamningbackend1.models.Item;
 import com.example.inlamningbackend1.repositories.ItemRepository;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,11 @@ public class ItemController {
         return itemRepository.findById(id).get();
     }
 
+    @PostMapping("items")
+    public String addItemtoRepo(@RequestParam String name, @RequestParam int price){
+        Item item = new Item(name,price);
+        itemRepository.save(item);
+        return "Varan " + name + " har lagts till";
+    }
 
 }
