@@ -7,25 +7,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Order {
+public class Buy {
     @Id
     @GeneratedValue
     protected long id;
     protected LocalDate date;
+
+    public Buy(LocalDate date) {
+        this.date = date;
+    }
     @ManyToOne
     @JoinColumn
     protected Customer customer;
     @ManyToMany
-    @JoinTable
-    protected List<Item> items;
+    @JoinColumn
+    private List<Item> items = new ArrayList<>();
 
-    public Order(LocalDate date, Customer customer, List<Item> items) {
+    public Buy(LocalDate date, Customer customer, List<Item> items) {
         this.date = date;
         this.customer = customer;
         this.items = items;
