@@ -36,11 +36,11 @@ public class CustomerController {
         Customer c = new Customer(name, ssn);
         customerRepository.save(c);
         return "Customer "+name+ " saved";
-    }
+    }*/
 
     @PostMapping("/customers")
-    public String addCostumer(@RequestBody Customer c){
+    public String addCustomer(@RequestBody Customer c){
         customerRepository.save(c);
         return "Customer "+c.getName()+" saved";
-    }*/
+    }
 }
