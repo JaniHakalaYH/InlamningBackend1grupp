@@ -23,10 +23,9 @@ public class ItemController {
     }
 
     @PostMapping("items")
-    public String addItemtoRepo(@RequestParam String name, @RequestParam int price){
-        Item item = new Item(name,price);
-        itemRepository.save(item);
-        return "Varan " + name + " har lagts till";
+    public String addItemtoRepo(@RequestBody Item i){
+        itemRepository.save(i);
+        return "Varan " + i.getName() + " har lagts till";
     }
 
 }
