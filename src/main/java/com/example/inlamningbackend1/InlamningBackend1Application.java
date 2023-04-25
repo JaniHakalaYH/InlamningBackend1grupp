@@ -9,7 +9,7 @@ public class InlamningBackend1Application {
     public static void main(String[] args) {
         SpringApplication.run(InlamningBackend1Application.class, args);
     }
-
+    //HRJ
 
     //hej mina vännor
 }
