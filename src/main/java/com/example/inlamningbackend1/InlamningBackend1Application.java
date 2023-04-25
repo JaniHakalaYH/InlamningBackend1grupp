@@ -21,6 +21,7 @@ public class InlamningBackend1Application {
     public static void main(String[] args) {
         SpringApplication.run(InlamningBackend1Application.class, args);
     }
+    //hej alla mina vänner
 
     @Bean
     public CommandLineRunner demo(CustomerRepository customerRepo, ItemRepository itemRepo, BuyRepository buyRepo){
