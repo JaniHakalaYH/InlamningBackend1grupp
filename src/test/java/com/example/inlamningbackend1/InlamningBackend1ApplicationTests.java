@@ -9,5 +9,4 @@ class InlamningBackend1ApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
