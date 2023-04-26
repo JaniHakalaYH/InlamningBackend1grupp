@@ -20,9 +20,6 @@ public class Buy {
     protected long id;
     protected LocalDate date;
 
-    public Buy(LocalDate date) {
-        this.date = date;
-    }
     @ManyToOne
     @JoinColumn
     protected Customer customer;

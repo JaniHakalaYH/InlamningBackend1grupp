@@ -6,9 +6,7 @@ import com.example.inlamningbackend1.models.Item;
 import com.example.inlamningbackend1.repositories.BuyRepository;
 import com.example.inlamningbackend1.repositories.CustomerRepository;
 import com.example.inlamningbackend1.repositories.ItemRepository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,22 +24,27 @@ public class BuyController {
         this.itemRepo = itemRepo;
     }
 
-    @RequestMapping("Orders")
+    @RequestMapping("orders")
     public List<Buy> getAllOrders() {
         return buyRepo.findAll();
     }
 
-    @RequestMapping("Orders/{customerId}")
-    public List<Buy> getCustomerOrder(@RequestParam Integer customerId) {
-
-        Customer customer = customerRepo.findById(Long.valueOf(customerId)).get();
-
+    @RequestMapping("orders/{id}")
+    public List<Buy> getCustomerOrder(@PathVariable Long id) {
+        Customer customer = customerRepo.findById(id).get();
+        System.out.println(customer);
         List<Buy> buyList = buyRepo.findByCustomer(customer);
-
 
 
         return buyList;
     }
+
+   /* @PostMapping("items/buy")
+    public String addItemtoRepo(@RequestBody Buy b){
+        buyRepo.save(b);
+
+
+    }*/
 
 }
 
