@@ -8,6 +8,7 @@ import com.example.inlamningbackend1.repositories.CustomerRepository;
 import com.example.inlamningbackend1.repositories.ItemRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @RestController
@@ -39,12 +40,23 @@ public class BuyController {
         return buyList;
     }
 
-   /* @PostMapping("items/buy")
-    public String addItemtoRepo(@RequestBody Buy b){
-        buyRepo.save(b);
+    @RequestMapping("items/buy")
+    public String addItemtoRepo(@RequestParam Long cId, @RequestParam Long iId){
+        Customer customer = customerRepo.findById(cId).get();
+        Item item = itemRepo.findById(iId).get();
+        List<Item> mutableList = new ArrayList<>();
+        mutableList.add(item);
 
+        buyRepo.save(
+                new Buy(
+                        LocalDate.now(),
+                        customer,
+                        mutableList
+                )
+        );
 
-    }*/
+        return customer.getName() + " har köpt: " + item.getName();
+    }
 
 }
 

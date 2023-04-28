@@ -6,7 +6,6 @@ import com.example.inlamningbackend1.models.Item;
 import com.example.inlamningbackend1.repositories.BuyRepository;
 import com.example.inlamningbackend1.repositories.CustomerRepository;
 import com.example.inlamningbackend1.repositories.ItemRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -121,5 +121,19 @@ class BuyControllerTest {
                 .perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expected));
+    }
+
+    ///items/buy?cId=1&iId=2
+
+    @Test
+    void postBuyItemUsingIdUsingMockExpectingString() throws Exception{
+        final String expected = "Anton har köpt: Toaborste";
+        final String url = "/items/buy?cId=1&iId=2";
+
+        this
+                .mvc
+                .perform(post(url))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo(expected)));
     }
 }
