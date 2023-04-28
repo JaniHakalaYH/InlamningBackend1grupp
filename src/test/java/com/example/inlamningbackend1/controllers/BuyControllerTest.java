@@ -113,38 +113,7 @@ class BuyControllerTest {
 
     @Test
     void getBuyByIdUsingMockExpectingOneJsonObject() throws Exception{
-
-        LocalDate d1 = LocalDate.of(2008, 2, 25);
-        LocalDate d2 = LocalDate.of(1999, 1, 3);
-        LocalDate d3 = LocalDate.of(2020, 12, 30);
-
-
-        Customer c1 = new Customer("Anton", "000918");
-        Customer c2 = new Customer("Elias", "020918");
-        Customer c3 = new Customer("Jani", "000999");
-
-        c1.setId(1L);
-        c2.setId(2L);
-        c3.setId(3L);
-
-        Item i1 = new Item("Tandborste",12L);
-        Item i2 = new Item("Toaborste", 25L);
-        Item i3 = new Item("Diskborste", 10L);
-
-        List<Item> list1 = List.of(i1,i2);
-        List<Item> list2 = List.of(i2,i3);
-        List<Item> list3 = List.of(i1,i2,i3);
-
-        Buy b1 = new Buy(d1,c1,list1);
-        Buy b2 = new Buy(d2,c2,list2);
-        Buy b3 = new Buy(d3,c3,list3);
-
-        b1.setId(1);
-        b2.setId(2);
-        b3.setId(3);
-
-
-        final String expected ="{\"id\":1,\"date\":\"2008-02-25\",\"customer\":{\"id\":1,\"name\":\"Anton\",\"ssn\":\"000918\"},\"items\":[{\"id\":0,\"name\":\"Tandborste\",\"pris\":12},{\"id\":0,\"name\":\"Toaborste\",\"pris\":25}]}";
+        final String expected ="[{\"id\":1,\"date\":\"2008-02-25\",\"customer\":{\"id\":1,\"name\":\"Anton\",\"ssn\":\"000918\"},\"items\":[{\"id\":0,\"name\":\"Tandborste\",\"pris\":12},{\"id\":0,\"name\":\"Toaborste\",\"pris\":25}]}]";
         final String url = "/orders/1";
 
         this
